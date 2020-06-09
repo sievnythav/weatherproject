@@ -1,6 +1,9 @@
 <template>
   <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : '' ">
     <main>
+      <!-- <Navbar/> -->
+      <!-- <AllFriends :friends="friends"/>
+      <OnlineFriends :friends="friends"/> -->
       <div class="search-box">
         <input
          type="text"
@@ -27,14 +30,34 @@
 </template>
 
 <script>
+// import Navbar from './Navbar'
+// import AllFriends from './AllFriends'
+// import OnlineFriends from './OnlineFriends'
 export default {
   name: 'app',
+  // components: {
+  //   Navbar: Navbar
+  // },
+  // components: {
+  //   OnlineFriends: OnlineFriends,
+  //   AllFriends: AllFriends
+  // },
   data () {
     return {
       api_key: '656665aeeb8b6169ccb6bf35e7228997',
       url_base: 'https://api.openweathermap.org/data/2.5/',
       query: '',
-      weather: {}
+      weather: {},
+      // friends: [
+      //           {name: 'Sievny', online: true},
+      //           {name: 'Mane', online: false},
+      //           {name: 'Jacob', online: true},
+      //           {name: 'Jose', online: true},
+      //           {name: 'Brando', online: false},
+      //           {name: 'Al', online: true},
+      //           {name: 'Manny', online: false},
+      //           {name: 'Kiko', online: true}
+      //       ]
     }
   },
   methods: {
@@ -75,7 +98,7 @@ body {
   font-family: 'Roboto Mono', monospace;
 
 }
-#app {
+#app{
   background-image: url('./assets/cold.jpg');
   background-size: cover;
   background-position: center;
@@ -91,7 +114,7 @@ body {
     min-height: 100vh;
     padding: 25px;
 
-    background-image: linear-gardient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75))
+    background-image: linear-gardient(to center, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75))
   };
   .search-box {
     width: 100%;
