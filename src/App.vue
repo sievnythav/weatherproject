@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : '' ">
     <main>
       <div class="search-box">
         <input
@@ -14,7 +14,7 @@
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <div class="location-box">
           <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
-          <div class="date">TUESDAY 9 JUNE 2020</div>
+          <div class="date">{{ dateBuilder() }}</div>
         </div>
 
         <div class="weather-box">
@@ -78,7 +78,13 @@ body {
 #app {
   background-image: url('./assets/cold.jpg');
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
+  transition: 0.4s;
+}
+#app.warm {
+  background-image: url('./assets/warm.jpg');
+  background-size: cover;
+  background-position: center;
   transition: 0.4s;
 }
   main {
@@ -115,30 +121,23 @@ body {
 
   }
   .location-box .location {
-    color: #fffdf9;
+    color: #07031a;
     font-size: 32px;
     font-weight: 500;
     font-style: Lexend Tera;
-    text-align: left;
+    text-align: center;
     text-shadow: 1px 3px rgba (0, 0, 0, 0.25);
 
-    background-color: #30475e;
-    border-radius: 16px;
-    margin: 30px 0px;
   }
   .location-box .date {
-    color: #fffdf9;
+    color: #07031a;
     font-size: 32px;
     font-weight: 300;
     font-style: italic;
-    text-align: left;
-
-    background-color: #30475e;
-    border-radius: 16px;
-    margin: 30px 0px;
+    text-align: center;
   }
   .weather-box {
-    text-align: left;
+    text-align: center;
   }
   .weather-box .temp {
     display: inline-block;
@@ -147,21 +146,17 @@ body {
     font-size: 102px;
     font-weight: 900px;
 
-    background-color: #30475e;
+    background-color: #818c97;
     border-radius: 16px;
     margin: 30px 0px;
 
     box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
   }
   .weather-box .weather {
-    color: #fffdf9;
+    color: #07031a;
     font-size: 48px;
     font-weight: 700px;
     font-style: italic;
     text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
-
-    background-color: #30475e;
-    border-radius: 16px;
-    margin: 30px 0px;
   }
 </style>
